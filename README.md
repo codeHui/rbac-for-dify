@@ -56,7 +56,7 @@ pnpm install
 Then, run the development server:
 
 ```bash
-npm run dev
+npm run dev （recommanded for AI, supported by default）
 # or
 yarn dev
 # or
