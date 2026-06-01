@@ -33,6 +33,17 @@ const isEmptyInputValue = (value: any) => {
   return false
 }
 
+const getInputFiles = (value: any) => {
+  if (Array.isArray(value)) { return value }
+  if (value?.supportFileType) { return [value] }
+
+  return []
+}
+
+const hasPendingInputFile = (value: any) => {
+  return getInputFiles(value).some(file => file.progress !== 100 || (!file.isRemote && !file.uploadedId))
+}
+
 export interface IWelcomeProps {
   conversationName: string
   hasSetInputs: boolean
@@ -142,7 +153,7 @@ const Welcome: FC<IWelcomeProps> = ({
                   onChange={(files) => {
                     setInputs({ ...inputs, [item.key]: files[0] })
                   }}
-                  value={inputs?.[item.key] || []}
+                  value={getInputFiles(inputs?.[item.key])}
                 />
               )
             }
@@ -159,7 +170,7 @@ const Welcome: FC<IWelcomeProps> = ({
                   onChange={(files) => {
                     setInputs({ ...inputs, [item.key]: files })
                   }}
-                  value={inputs?.[item.key] || []}
+                  value={getInputFiles(inputs?.[item.key])}
                 />
               )
             }
@@ -181,6 +192,11 @@ const Welcome: FC<IWelcomeProps> = ({
 
     if (hasEmptyRequired) {
       logError(t('app.errorMessage.valueOfVarRequired'))
+      return false
+    }
+
+    if (vars.some(v => hasPendingInputFile(inputs?.[v.key]))) {
+      logError(t('app.errorMessage.waitForFileUpload'))
       return false
     }
 

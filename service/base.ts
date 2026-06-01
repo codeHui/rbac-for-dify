@@ -391,6 +391,9 @@ export const upload = (fetchOptions: any): Promise<any> => {
   const urlPrefix = API_PREFIX
   const urlWithPrefix = `${urlPrefix}/file-upload`
   const uploadHeaders = Object.fromEntries(buildRequestHeaders(fetchOptions?.headers).entries())
+  Object.keys(uploadHeaders).forEach((key) => {
+    if (key.toLowerCase() === 'content-type') { delete uploadHeaders[key] }
+  })
   const defaultOptions = {
     method: 'POST',
     url: `${urlWithPrefix}`,

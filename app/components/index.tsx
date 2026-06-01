@@ -411,12 +411,18 @@ const Main: FC<IMainProps> = ({ session }) => {
   }
 
   const transformToServerFile = (fileItem: any) => {
-    return {
-      type: 'image',
-      transfer_method: fileItem.transferMethod,
-      url: fileItem.url,
-      upload_file_id: fileItem.id,
+    const transferMethod = fileItem.transferMethod || fileItem.transfer_method
+    const serverFile: VisionFile = {
+      type: fileItem.supportFileType || fileItem.type,
+      transfer_method: transferMethod,
+      url: '',
+      upload_file_id: '',
     }
+
+    if (transferMethod === TransferMethod.remote_url) { serverFile.url = fileItem.url || '' }
+    else { serverFile.upload_file_id = fileItem.uploadedId || fileItem.upload_file_id || '' }
+
+    return serverFile
   }
 
   const handleSend = async (message: string, files?: VisionFile[]) => {

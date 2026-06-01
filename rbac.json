@@ -4,7 +4,8 @@
         "admin": {
             "agents": [
                 "agent-1",
-                "agent-2"
+                "agent-2",
+                "Document agent"
             ]
         },
         "user": {
