@@ -98,6 +98,7 @@ const Chat: FC<IChatProps> = ({
 
   const handleSend = () => {
     if (!valid() || (checkCanSend && !checkCanSend())) { return }
+    const message = queryRef.current.trim()
     const hasPendingImageUploads = files.some(file => file.progress !== -1 && file.progress < 100)
     const hasPendingAttachmentUploads = attachmentFiles.some(file => file.progress !== -1 && file.progress < 100)
     if (hasPendingImageUploads || hasPendingAttachmentUploads) {
@@ -112,7 +113,7 @@ const Chat: FC<IChatProps> = ({
     }))
     const docAndOtherFiles: VisionFile[] = getProcessedFiles(attachmentFiles)
     const combinedFiles: VisionFile[] = [...imageFiles, ...docAndOtherFiles]
-    onSend(queryRef.current, combinedFiles)
+    onSend(message, combinedFiles)
     if (!files.find(item => item.type === TransferMethod.local_file && !item.fileId)) {
       if (files.length) { onClear() }
       if (!isResponding) {
