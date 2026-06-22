@@ -34,6 +34,7 @@ JWT_SECRET=replace-this-in-production
 ```
 `appId` 和 `apiKey` 来自你在 Dify 后台创建应用后的配置信息：  
 ![app_config](readme/images/app_config.jpg)
+![customize_dify](readme/images/customize_dify.jpg)
 
 你也可以在 `config/index.ts` 文件中进行更多配置：
 

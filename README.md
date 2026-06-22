@@ -34,7 +34,7 @@ JWT_SECRET=replace-this-in-production
 ```
 The `appId` and `apiKey` are from the Dify backend after you create an APP:
 ![app_config](readme/images/app_config.jpg)
-
+![customize_dify](readme/images/customize_dify.jpg)
 Config more in `config/index.ts` file:
 
 ```js
