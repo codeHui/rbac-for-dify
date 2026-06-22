@@ -2,7 +2,7 @@
 
 # RBAC (Role based access control) for Dify
 
-RBAC behavior: As shown on the left in the image below, when **admin** logs in they can see all apps, while **user** can only see the apps configured for their role (configured in [rbac.json](./rbac.json)).
+RBAC 效果：如下图左边，admin 登录可以看到所有 APP，而 user 登录只能看到为其配置的部分 APP（配置在 [rbac.json](./rbac.json)）。
 
 ![dify_rbac](readme/images/dify_rbac.jpg)
 
@@ -10,9 +10,9 @@ RBAC behavior: As shown on the left in the image below, when **admin** logs in t
 
 This project is forked from the Dify official project: [`langgenius/webapp-conversation`](https://github.com/langgenius/webapp-conversation) (a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app))
 
-For the RBAC implementation flow, see: [rbac_flow_guide](readme/rbac_flow_guide.md)
+RBAC 的实现流程，请参考：[rbac_flow_guide](readme/rbac_flow_guide_cn.md)
 
-You can compare the `backup/webapp-conversation_original_code_202606` and `main` branches to see what code changes this project made to the original project.
+你可以 compare `backup/webapp-conversation_original_code_202606` 和 `main` 分支，check 该项目对原始项目做了哪些代码修改。
 
 # Config App
 
@@ -20,11 +20,12 @@ You can compare the `backup/webapp-conversation_original_code_202606` and `main`
 
 Create a file named `.env.local` in the current directory and copy the contents from `.env.example`. Setting the following content:
 
-```dotenv
+```
 # APP URL: This is the API's base URL. If you're using the Dify cloud service, set it to: https://api.dify.ai/v1.
 NEXT_PUBLIC_API_URL=http://127.0.0.1/v1
 
-# Multi-app configuration for RBAC. 
+# Multi-agent configuration. Each item needs a display name, appId, and apiKey.
+# appId and apiKey below are from Dify backend after you create a APP:
 # The appId is the unique identifier from the Dify app URL.
 # The apiKey is generated from the app's API Access page.
 NEXT_PUBLIC_AGENT_CONFIGS=[{"name":"Agent 1","appId":"your-first-app-id","apiKey":"app-your-first-key"},{"name":"Agent 2","appId":"your-second-app-id","apiKey":"app-your-second-key"}]
@@ -32,8 +33,6 @@ NEXT_PUBLIC_AGENT_CONFIGS=[{"name":"Agent 1","appId":"your-first-app-id","apiKey
 # Used to sign the JWT Token for login.
 JWT_SECRET=replace-this-in-production
 ```
-The `appId` and `apiKey` are from the Dify backend after you create an APP:
-![alt text](readme/images/app_config.jpg)
 
 Config more in `config/index.ts` file:
 
@@ -74,13 +73,13 @@ Edit [rbac.json](./rbac.json) directly to manage roles and accounts. The backend
 
 RBAC Notes:
 
-- `roles.<role>.agents` (e.g. `"agent-1"`, `"agent-2"`) are defined in `NEXT_PUBLIC_AGENT_CONFIGS`
+- `roles.<role>.agents`（例如 `"agent-1"`、`"agent-2"`）定义在 `NEXT_PUBLIC_AGENT_CONFIGS` 中
 
 Login Notes:
 
-- `defaultPassword` is the shared password for every configured account.
-- The default accounts are `admin / 123456` and `user / 123456`.
-- The backend also accepts `Authorization: Bearer <jwt>` headers, but the built-in login flow stores the JWT in an HTTP-only cookie.
+- `defaultPassword` 是所有配置账号的共用密码。
+- 默认账号为 `admin / 123456` 和 `user / 123456`。
+- 后端也接受 `Authorization: Bearer <jwt>` 请求头，但内置登录流程会将 JWT 存储在 HTTP-only cookie 中。
 
 # Getting Started
 

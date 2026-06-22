@@ -1,3 +1,5 @@
+[English](rbac_flow_guide.md) | [中文](rbac_flow_guide_cn.md)
+
 # RBAC Flow Guide
 
 ## 1. `api/chat-messages` 請求從前端到 Dify 的執行鏈路
