@@ -33,7 +33,7 @@ NEXT_PUBLIC_AGENT_CONFIGS=[{"id":"agent-1","name":"Agent 1","appId":"your-first-
 JWT_SECRET=replace-this-in-production
 ```
 The `appId` and `apiKey` are from the Dify backend after you create an APP:
-![alt text](readme/images/app_config.jpg)
+![app_config](readme/images/app_config.jpg)
 
 Config more in `config/index.ts` file:
 
@@ -108,4 +108,4 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 # Open Source
 
 This project is based on the MIT license of [`langgenius/webapp-conversation`](https://github.com/langgenius/webapp-conversation).
-Please note that this project was rapidly developed using Vibe Coding and is not yet production-ready. My hope is that it serves as a springboard for further innovation. Developers with interest are welcome to optimize the project. Discussion, bug fixes, and pull requests are all welcome!
+Please note that this project was rapidly developed using Vibe Coding and is not yet production-ready. My hope is that it serves as a springboard for further innovation. Developers with interest are welcome to optimize the project. [Discussion](https://github.com/codeHui/rbac-for-dify/discussions), bug fixes, and pull requests are all welcome!

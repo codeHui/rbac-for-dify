@@ -2,7 +2,7 @@
 
 # Dify 的基于角色的访问控制 (RBAC)
 
-**RBAC 行为：** 如下图左侧所示，当 **admin**（管理员）登录时，他们可以看到所有应用；而 **user**（普通用户）只能看到为其角色配置的应用（配置位于 [rbac.json](./rbac.json) 中）。
+**RBAC 行为：** 如下图左侧所示，当 **admin**（管理员）登录时，他们可以看到所有应用；而 **user**（普通用户）只能看到为其角色配置的应用（配置位于 [rbac.json](./rbac.json) 中）。  
 
 ![dify_rbac](readme/images/dify_rbac.jpg)
 
@@ -32,8 +32,8 @@ NEXT_PUBLIC_AGENT_CONFIGS=[{"id":"agent-1","name":"Agent 1","appId":"your-first-
 # 用于登录时签名 JWT Token。
 JWT_SECRET=replace-this-in-production
 ```
-`appId` 和 `apiKey` 来自你在 Dify 后台创建应用后的配置信息：
-![alt text](readme/images/app_config.jpg)
+`appId` 和 `apiKey` 来自你在 Dify 后台创建应用后的配置信息：  
+![app_config](readme/images/app_config.jpg)
 
 你也可以在 `config/index.ts` 文件中进行更多配置：
 
@@ -108,4 +108,4 @@ pnpm dev
 # 开源
 
 本项目基于 [`langgenius/webapp-conversation`](https://github.com/langgenius/webapp-conversation) 的 MIT 许可证发布。
-请注意，本项目是使用 Vibe Coding 快速开发的，尚未达到生产就绪状态。希望它能作为一个跳板，激发更多的创新。感兴趣的开发者欢迎对其进行优化。讨论、错误修复和 Pull Requests 都非常欢迎！
+请注意，本项目是使用 Vibe Coding 快速开发的，尚未达到生产就绪状态。希望它能作为一个跳板，激发更多的创新。感兴趣的开发者欢迎对其进行优化。[Discussion](https://github.com/codeHui/rbac-for-dify/discussions), bug fixes, 和 pull requests 都非常欢迎！
