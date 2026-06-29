@@ -1,6 +1,6 @@
 [English](README.md) | [中文](README_zh.md)
 
-# RBAC (Role based access control) for Dify
+# Implement RBAC (Role based access control) for Dify
 
 RBAC behavior: As shown on the left in the image below, when **admin** logs in they can see all apps, while **user** can only see the apps configured for their role (configured in [rbac.json](./rbac.json)).
 
@@ -8,7 +8,7 @@ RBAC behavior: As shown on the left in the image below, when **admin** logs in t
 
 # Software Architecture
 
-This project is forked from the Dify official project: [`langgenius/webapp-conversation`](https://github.com/langgenius/webapp-conversation) (a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app))
+This project is forked from the Dify official project (MIT license): [`langgenius/webapp-conversation`](https://github.com/langgenius/webapp-conversation) (Next.js)
 
 For the RBAC implementation flow, see: [rbac_flow_guide](readme/rbac_flow_guide.md)
 
@@ -32,8 +32,9 @@ NEXT_PUBLIC_AGENT_CONFIGS=[{"id":"agent-1","name":"Agent 1","appId":"your-first-
 # Used to sign the JWT Token for login.
 JWT_SECRET=replace-this-in-production
 ```
-The `appId` and `apiKey` are from the Dify backend after you create an APP:
+- The `appId` and `apiKey` are from the Dify backend after you create an APP:
 ![app_config](readme/images/app_config.jpg)
+- [`langgenius/webapp-conversation`](https://github.com/langgenius/webapp-conversation) is the project that Dify provided for developers to folk and customize the web APP
 ![customize_dify](readme/images/customize_dify.jpg)
 Config more in `config/index.ts` file:
 
@@ -107,5 +108,5 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 # Open Source
 
-This project is based on the MIT license of [`langgenius/webapp-conversation`](https://github.com/langgenius/webapp-conversation).
+This project is based on the MIT license of [`langgenius/webapp-conversation`](https://github.com/langgenius/webapp-conversation). This is an independent, community-maintained project, not an official Dify Project. It is not affiliated with, endorsed by, or sponsored by LangGenius / the Dify project.   
 Please note that this project was rapidly developed using Vibe Coding and is not yet production-ready. My hope is that it serves as a springboard for further innovation. Developers with interest are welcome to optimize the project. [Discussion](https://github.com/codeHui/rbac-for-dify/discussions), bug fixes, and pull requests are all welcome!
